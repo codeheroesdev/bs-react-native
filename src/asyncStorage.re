@@ -7,7 +7,7 @@ let map_cb = (cb, err, value) =>
 
 let map_cb_err_only = (cb, err) => cb(Js.Null.toOption(err));
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external _getItem:
   (
     string,
@@ -26,7 +26,7 @@ let getItem = (key, ~callback=?, ()) =>
     )
   };
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external _setItem:
   (string, string, Js.Undefined.t(Js.Null.t(error) => unit)) =>
   Js.Promise.t(unit) =
@@ -39,7 +39,7 @@ let setItem = (key, value, ~callback=?, ()) =>
     _setItem(key, value, Js.Undefined.return(map_cb_err_only(cb)))
   };
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external _removeItem:
   (string, Js.Undefined.t(Js.Null.t(error) => unit)) => Js.Promise.t(unit) =
   "removeItem";
@@ -50,7 +50,7 @@ let removeItem = (key, ~callback=?, ()) =>
   | Some(cb) => _removeItem(key, Js.Undefined.return(map_cb_err_only(cb)))
   };
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external _mergeItem:
   (string, string, Js.Undefined.t(Js.Null.t(error) => unit)) =>
   Js.Promise.t(unit) =
@@ -63,7 +63,7 @@ let mergeItem = (key, value, ~callback=?, ()) =>
     _mergeItem(key, value, Js.Undefined.return(map_cb_err_only(cb)))
   };
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external _clear:
   Js.Undefined.t(Js.Null.t(error) => unit) => Js.Promise.t(unit) =
   "clear";
@@ -74,7 +74,7 @@ let clear = (~callback=?, ()) =>
   | Some(cb) => _clear(Js.Undefined.return(map_cb_err_only(cb)))
   };
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external _getAllKeys:
   Js.Undefined.t(
     (Js.Null.t(error), Js.Null_undefined.t(array(string))) => unit,
@@ -92,10 +92,10 @@ let getAllKeys = (~callback=?, ()) =>
     )
   };
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external flushGetRequests: unit => unit = "";
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external _multiGet:
   (
     array(string),
@@ -120,7 +120,7 @@ let multiGet = (keys, ~callback=?, ()) =>
     )
   };
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external _multiSet:
   (
     array(array(string)),
@@ -141,7 +141,7 @@ let multiSet = (keyValues, ~callback=?, ()) => {
   };
 };
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external _multiRemove:
   (array(string), Js.Undefined.t(Js.Null.t(array(error)) => unit)) =>
   Js.Promise.t(unit) =
@@ -153,7 +153,7 @@ let multiRemove = (keys, ~callback=?, ()) =>
   | Some(cb) => _multiRemove(keys, Js.Undefined.return(map_cb_err_only(cb)))
   };
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external _multiMerge:
   (
     array(array(string)),

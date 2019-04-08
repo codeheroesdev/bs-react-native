@@ -21,7 +21,7 @@ let getAllKeys:
   (~callback: (option(error), option(array(string))) => unit=?, unit) =>
   Js.Promise.t(option(array(string)));
 
-[@bs.scope "AsyncStorage"] [@bs.module "@react-native-community/async-storage"]
+[@bs.module "@react-native-community/async-storage"]
 external flushGetRequests: unit => unit = "";
 
 let multiGet:
